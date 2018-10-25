@@ -96,7 +96,7 @@ public class Player : MonoBehaviour
         {
             foreach (Transform point in groundPoints)
             {
-                Collider2D[] colliders = Physics2D.OverlapCircleAll(point.position, 0.05f, ground);
+                Collider2D[] colliders = Physics2D.OverlapCircleAll(point.position, 0.1f, ground);
                 for (int i = 0; i < colliders.Length; i++)
                 {
                     if (colliders[i].gameObject != gameObject) return true;
