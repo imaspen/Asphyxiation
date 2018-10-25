@@ -7,7 +7,7 @@ public class Player : MonoBehaviour
 
     [SerializeField]
     float oxygenTank = 100; // players health
-    
+    public float collectedTanks = 0;
     Rigidbody2D rigidbody2D;
     SpriteRenderer spriteRenderer;
 
@@ -44,6 +44,14 @@ public class Player : MonoBehaviour
         MovePlayer(move);
 
         LoseOxygenOverTime();
+    }
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("Oxygen Canister"))
+        {
+            collectedTanks++; 
+             Destroy(other.gameObject);
+        }   
     }
 
     void MovePlayer(float direction)
