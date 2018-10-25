@@ -1,11 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class Player : MonoBehaviour
 {
 
-    public int maxOxygenCapacity = 1;
+    public int maxOxygenCapacity = 3;
     public static float oxygenTank = 1; // players health
     public float collectedTanks = 0;
 
@@ -142,7 +142,14 @@ public class Player : MonoBehaviour
     {
         if (oxygenTank > 0)
         {
+           
             oxygenTank -= 0.05f * Time.deltaTime;
+            Debug.Log(oxygenTank);
+            if (oxygenTank <= 0.0)
+            {
+                SceneManager.LoadScene("gameover");
+            }
+
         }
     }
 
@@ -184,6 +191,7 @@ public class Player : MonoBehaviour
         if (collision.gameObject.CompareTag("Oxygen Canister"))
         {
             collectedTanks++;
+            oxygenTank += 0.25f;
             Destroy(collision.gameObject);
         }
 
