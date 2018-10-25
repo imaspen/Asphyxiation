@@ -501,7 +501,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4560470380652490, guid: ed833eab23355474e927eff1b41c40a7, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -2
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 4560470380652490, guid: ed833eab23355474e927eff1b41c40a7, type: 2}
       propertyPath: m_LocalPosition.y
@@ -2797,7 +2797,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4560470380652490, guid: ed833eab23355474e927eff1b41c40a7, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -2
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 4560470380652490, guid: ed833eab23355474e927eff1b41c40a7, type: 2}
       propertyPath: m_LocalPosition.y
@@ -7048,6 +7048,11 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
+--- !u!4 &1082300856 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4833983770614566, guid: c634151bea0ae134bbfb4d0e1185f823,
+    type: 2}
+  m_PrefabInternal: {fileID: 926618716}
 --- !u!1 &1084634528
 GameObject:
   m_ObjectHideFlags: 0
@@ -12155,6 +12160,7 @@ Transform:
   - {fileID: 46278530}
   - {fileID: 676429517}
   - {fileID: 408152317}
+  - {fileID: 1082300856}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
