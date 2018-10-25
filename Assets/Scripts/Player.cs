@@ -25,11 +25,31 @@ public class Player : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        var move = new Vector3(Input.GetAxis("Horizontal"), 0);
-        var sprite = 0;
+        var move = Input.GetAxis("Horizontal");
+        UpdateSprite(move);
+        
+        //transform.position += move * speed * Time.deltaTime;
+        MovePlayer(move);
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            rigidbody2D.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
+        }
+
+        LoseOxygenOverTime();
+    }
+
+    void MovePlayer(float direction)
+    {
+        rigidbody2D.velocity = new Vector2(direction * speed, rigidbody2D.velocity.y);
+    }
+
+    void UpdateSprite(float direction)
+    {
         float time = (Time.fixedTime % 1);
+        int sprite = 0;
         if (time < 0.33)
         {
             sprite = 0;
@@ -40,25 +60,18 @@ public class Player : MonoBehaviour
         }
         else sprite = 2;
 
-        if (move.x > 0)
+        if (direction > 0)
         {
             spriteRenderer.sprite = rightSprites[sprite];
-        } else if (move.x < 0)
+        }
+        else if (direction < 0)
         {
             spriteRenderer.sprite = leftSprites[sprite];
-        } else
+        }
+        else
         {
             spriteRenderer.sprite = centerSprite;
         }
-
-        transform.position += move * speed * Time.deltaTime;
-
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            rigidbody2D.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
-        }
-
-        LoseOxygenOverTime();
     }
 
     void LoseOxygenOverTime()
