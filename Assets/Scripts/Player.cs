@@ -15,6 +15,10 @@ public class Player : MonoBehaviour
     public int score = 0;
     //public Text scoreText; // include when text on canvas
 
+    float curTime = 0; // damage delay on collision
+    float nextDamage = 1;
+    float damageDelay;
+
     Rigidbody2D rigidbody2D;
     SpriteRenderer spriteRenderer;
     BoxCollider2D boxCollider;
@@ -250,5 +254,36 @@ public class Player : MonoBehaviour
     private void updateScoreText()
     {
         // scoreText.text = score.ToString(); //include when text on canvas
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Enemy")
+        {
+            oxygenTank -= 0.05f * Time.deltaTime;
+
+            Debug.Log("-0.05");
+
+            if (oxygenTank <= 0)
+            {
+                Debug.Log("Dead");
+                oxygenTank = 0;
+                Destroy(gameObject);
+            }
+
+            if (curTime <= 0)
+            {
+                Debug.Log("Damage");
+
+                curTime = nextDamage;
+            }
+            else
+            {
+                curTime -= Time.deltaTime;
+            }
+
+            damageDelay = 15;
+        }
+
     }
 }
