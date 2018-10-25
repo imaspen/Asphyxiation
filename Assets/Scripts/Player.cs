@@ -10,6 +10,7 @@ public class Player : MonoBehaviour
     
     Rigidbody2D rigidbody2D;
     SpriteRenderer spriteRenderer;
+    BoxCollider2D boxCollider;
 
     public float jumpForce;
     public Sprite[] rightSprites = new Sprite[3];
@@ -18,8 +19,10 @@ public class Player : MonoBehaviour
     public float speed = 3.0f;
     public Transform[] groundPoints = new Transform[3];
     public LayerMask ground;
+    public LayerMask ladder;
 
     bool isGrounded;
+    BoxCollider2D climbing = null;
     bool jump;
 
     // Use this for initialization
@@ -27,18 +30,16 @@ public class Player : MonoBehaviour
     {
         rigidbody2D = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        boxCollider = GetComponent<BoxCollider2D>();
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
         var move = Input.GetAxis("Horizontal");
+        HandleInput();
 
         isGrounded = IsGrounded();
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            jump = true;
-        }
 
         UpdateSprite(move);
         MovePlayer(move);
@@ -46,14 +47,59 @@ public class Player : MonoBehaviour
         LoseOxygenOverTime();
     }
 
+    void HandleInput()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            jump = true;
+        }
+        if (Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.LeftControl))
+        {
+            if (climbing != null)
+            {
+                climbing = null;
+                rigidbody2D.isKinematic = false;
+            }
+            else
+            {
+                CanClimb();
+            }
+        }
+    }
+
     void MovePlayer(float direction)
     {
-        rigidbody2D.velocity = new Vector2(direction * speed, rigidbody2D.velocity.y);
-        if (isGrounded && jump)
+        if (climbing != null)
         {
-            isGrounded = false;
-            rigidbody2D.AddForce(new Vector2(0, jumpForce));
-            jump = false;
+            transform.position = new Vector2(climbing.transform.position.x, transform.position.y);
+            var move = Input.GetAxis("Vertical");
+            var ladderTop = climbing.transform.position.y + (climbing.size.y / 2);
+            var ladderBottom = climbing.transform.position.y - (climbing.size.y / 2);
+
+            if (groundPoints[0].position.y >= ladderTop && move >= 0)
+            {
+                rigidbody2D.velocity = Vector2.zero;
+                transform.position = new Vector2(transform.position.x, ladderTop + boxCollider.size.y / 2);
+            }
+            else if (groundPoints[0].position.y <= ladderBottom && move <= 0)
+            {
+                rigidbody2D.velocity = Vector2.zero;
+                transform.position = new Vector2(transform.position.x, ladderBottom + boxCollider.size.y / 2);
+            }
+            else
+            {
+                rigidbody2D.velocity = new Vector2(0, move * speed);
+            }
+        }
+        else
+        {
+            rigidbody2D.velocity = new Vector2(direction * speed, rigidbody2D.velocity.y);
+            if (isGrounded && jump)
+            {
+                isGrounded = false;
+                rigidbody2D.AddForce(new Vector2(0, jumpForce));
+                jump = false;
+            }
         }
     }
 
@@ -104,5 +150,22 @@ public class Player : MonoBehaviour
             }
         }
         return false;
+    }
+
+    private void CanClimb()
+    {
+        foreach (Transform point in groundPoints)
+        {
+            Collider2D[] colliders = Physics2D.OverlapCircleAll(point.position, 0.1f, ladder);
+            for (int i = 0; i < colliders.Length; i++)
+            {
+                if (colliders[i].gameObject != gameObject)
+                {
+                    climbing = (BoxCollider2D) colliders[i];
+                    rigidbody2D.isKinematic = true;
+                    return;
+                }
+            }
+        }
     }
 }
