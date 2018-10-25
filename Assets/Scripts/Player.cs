@@ -5,9 +5,13 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
 
-    [SerializeField]
-    float oxygenTank = 100; // players health
+    public int maxOxygenCapacity = 1;
+    public static float oxygenTank = 1; // players health
     public float collectedTanks = 0;
+
+    public int score = 0;
+    //public Text scoreText; // include when text on canvas
+
     Rigidbody2D rigidbody2D;
     SpriteRenderer spriteRenderer;
 
@@ -44,14 +48,6 @@ public class Player : MonoBehaviour
         MovePlayer(move);
 
         LoseOxygenOverTime();
-    }
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.gameObject.CompareTag("Oxygen Canister"))
-        {
-            collectedTanks++; 
-             Destroy(other.gameObject);
-        }   
     }
 
     void MovePlayer(float direction)
@@ -95,7 +91,10 @@ public class Player : MonoBehaviour
 
     void LoseOxygenOverTime()
     {
-        oxygenTank -= 1 * Time.deltaTime;
+        if (oxygenTank > 0)
+        {
+            oxygenTank -= 0.05f * Time.deltaTime;
+        }
     }
 
     private bool IsGrounded()
@@ -112,5 +111,32 @@ public class Player : MonoBehaviour
             }
         }
         return false;
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Oxygen Canister"))
+        {
+            collectedTanks++;
+            Destroy(collision.gameObject);
+        }
+
+        if (collision.gameObject.tag == "Gem")
+        {
+            score += 10;
+            updateScoreText();
+            collision.gameObject.SetActive(false);
+        }
+
+        if (collision.gameObject.tag == "Enemy")
+        {
+
+        }
+
+    }
+
+    private void updateScoreText()
+    {
+        // scoreText.text = score.ToString(); //include when text on canvas
     }
 }
