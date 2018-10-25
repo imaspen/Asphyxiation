@@ -8,9 +8,11 @@ public class Player : MonoBehaviour
     public int maxOxygenCapacity = 1;
     public static float oxygenTank = 0; // players health
     public bool onOxygenPad = false;
+    public float collectedTanks = 0;
 
     public int score = 0;
     //public Text scoreText; // include when text on canvas
+
 
     Rigidbody2D rigidbody2D;
     SpriteRenderer spriteRenderer;
@@ -123,6 +125,12 @@ public class Player : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (collision.gameObject.CompareTag("Oxygen Canister"))
+        {
+            collectedTanks++;
+            Destroy(collision.gameObject);
+        }
+
         if (collision.gameObject.name.Equals("OxygenPad"))
         {
             onOxygenPad = true;

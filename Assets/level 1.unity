@@ -333,6 +333,94 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
+--- !u!1001 &186414942
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4869227967339082, guid: 3c4d7839647c21b4481e0e2517c2fcd1, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 4.97
+      objectReference: {fileID: 0}
+    - target: {fileID: 4869227967339082, guid: 3c4d7839647c21b4481e0e2517c2fcd1, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -2.41
+      objectReference: {fileID: 0}
+    - target: {fileID: 4869227967339082, guid: 3c4d7839647c21b4481e0e2517c2fcd1, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4869227967339082, guid: 3c4d7839647c21b4481e0e2517c2fcd1, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4869227967339082, guid: 3c4d7839647c21b4481e0e2517c2fcd1, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4869227967339082, guid: 3c4d7839647c21b4481e0e2517c2fcd1, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0.38268343
+      objectReference: {fileID: 0}
+    - target: {fileID: 4869227967339082, guid: 3c4d7839647c21b4481e0e2517c2fcd1, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 0.92387956
+      objectReference: {fileID: 0}
+    - target: {fileID: 4869227967339082, guid: 3c4d7839647c21b4481e0e2517c2fcd1, type: 2}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 3c4d7839647c21b4481e0e2517c2fcd1, type: 2}
+  m_IsPrefabParent: 0
+--- !u!1001 &209397244
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4869227967339082, guid: 3c4d7839647c21b4481e0e2517c2fcd1, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -0.90772843
+      objectReference: {fileID: 0}
+    - target: {fileID: 4869227967339082, guid: 3c4d7839647c21b4481e0e2517c2fcd1, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -0.38588762
+      objectReference: {fileID: 0}
+    - target: {fileID: 4869227967339082, guid: 3c4d7839647c21b4481e0e2517c2fcd1, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4869227967339082, guid: 3c4d7839647c21b4481e0e2517c2fcd1, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4869227967339082, guid: 3c4d7839647c21b4481e0e2517c2fcd1, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4869227967339082, guid: 3c4d7839647c21b4481e0e2517c2fcd1, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0.38268343
+      objectReference: {fileID: 0}
+    - target: {fileID: 4869227967339082, guid: 3c4d7839647c21b4481e0e2517c2fcd1, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 0.92387956
+      objectReference: {fileID: 0}
+    - target: {fileID: 4869227967339082, guid: 3c4d7839647c21b4481e0e2517c2fcd1, type: 2}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1140574595186904, guid: 3c4d7839647c21b4481e0e2517c2fcd1, type: 2}
+      propertyPath: m_Name
+      value: Oxygen Canister (1)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 3c4d7839647c21b4481e0e2517c2fcd1, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &258896650
 GameObject:
   m_ObjectHideFlags: 0
@@ -445,7 +533,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4725407157964304, guid: 2ff189026d9a7354db38ab754720dbd3, type: 2}
       propertyPath: m_RootOrder
-      value: 3
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 108569869984930644, guid: 2ff189026d9a7354db38ab754720dbd3,
         type: 2}
@@ -762,7 +850,7 @@ Transform:
   - {fileID: 2027994306}
   - {fileID: 3705294}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!68 &643640953
 EdgeCollider2D:
@@ -861,7 +949,7 @@ Transform:
   - {fileID: 933076046}
   - {fileID: 1963455206}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &781945587
 GameObject:
@@ -1295,6 +1383,52 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
+--- !u!1001 &1288199769
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4869227967339082, guid: 3c4d7839647c21b4481e0e2517c2fcd1, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -3.9441416
+      objectReference: {fileID: 0}
+    - target: {fileID: 4869227967339082, guid: 3c4d7839647c21b4481e0e2517c2fcd1, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 1.4325296
+      objectReference: {fileID: 0}
+    - target: {fileID: 4869227967339082, guid: 3c4d7839647c21b4481e0e2517c2fcd1, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4869227967339082, guid: 3c4d7839647c21b4481e0e2517c2fcd1, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4869227967339082, guid: 3c4d7839647c21b4481e0e2517c2fcd1, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4869227967339082, guid: 3c4d7839647c21b4481e0e2517c2fcd1, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0.38268343
+      objectReference: {fileID: 0}
+    - target: {fileID: 4869227967339082, guid: 3c4d7839647c21b4481e0e2517c2fcd1, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 0.92387956
+      objectReference: {fileID: 0}
+    - target: {fileID: 4869227967339082, guid: 3c4d7839647c21b4481e0e2517c2fcd1, type: 2}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1140574595186904, guid: 3c4d7839647c21b4481e0e2517c2fcd1, type: 2}
+      propertyPath: m_Name
+      value: Oxygen Canister (3)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 3c4d7839647c21b4481e0e2517c2fcd1, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &1328100551
 GameObject:
   m_ObjectHideFlags: 0
@@ -1806,6 +1940,52 @@ Light:
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!1001 &2003891818
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4869227967339082, guid: 3c4d7839647c21b4481e0e2517c2fcd1, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 1.9571368
+      objectReference: {fileID: 0}
+    - target: {fileID: 4869227967339082, guid: 3c4d7839647c21b4481e0e2517c2fcd1, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -0.52312684
+      objectReference: {fileID: 0}
+    - target: {fileID: 4869227967339082, guid: 3c4d7839647c21b4481e0e2517c2fcd1, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4869227967339082, guid: 3c4d7839647c21b4481e0e2517c2fcd1, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4869227967339082, guid: 3c4d7839647c21b4481e0e2517c2fcd1, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4869227967339082, guid: 3c4d7839647c21b4481e0e2517c2fcd1, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0.38268343
+      objectReference: {fileID: 0}
+    - target: {fileID: 4869227967339082, guid: 3c4d7839647c21b4481e0e2517c2fcd1, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 0.92387956
+      objectReference: {fileID: 0}
+    - target: {fileID: 4869227967339082, guid: 3c4d7839647c21b4481e0e2517c2fcd1, type: 2}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1140574595186904, guid: 3c4d7839647c21b4481e0e2517c2fcd1, type: 2}
+      propertyPath: m_Name
+      value: Oxygen Canister (2)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 3c4d7839647c21b4481e0e2517c2fcd1, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &2006075475
 GameObject:
   m_ObjectHideFlags: 0
@@ -1991,7 +2171,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4199956668959824, guid: ded2f019e8a364a41a44162cfe38cb74, type: 2}
       propertyPath: m_RootOrder
-      value: 1
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 212169613498892616, guid: ded2f019e8a364a41a44162cfe38cb74,
         type: 2}
