@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Oxygen Canister
+  - Door
   layers:
   - Default
   - TransparentFX
