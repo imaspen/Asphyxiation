@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Oxygen Canister
   - Door
+  - Enemy
   layers:
   - Default
   - TransparentFX

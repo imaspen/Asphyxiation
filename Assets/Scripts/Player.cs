@@ -260,15 +260,13 @@ public class Player : MonoBehaviour
     {
         if (collision.gameObject.tag == "Enemy")
         {
-            oxygenTank -= 0.05f * Time.deltaTime;
+            oxygenTank -= 1.5f * Time.deltaTime;
 
             Debug.Log("-0.05");
 
-            if (oxygenTank <= 0)
+            if (oxygenTank <= 0.0)
             {
-                Debug.Log("Dead");
-                oxygenTank = 0;
-                Destroy(gameObject);
+                SceneManager.LoadScene("gameover");
             }
 
             if (curTime <= 0)
