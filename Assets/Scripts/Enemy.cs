@@ -12,9 +12,10 @@ public class Enemy : MonoBehaviour {
 
     public Transform target;
     public float chaseRange;
+    public bool chase = true;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
 		
 	}
 	
@@ -23,12 +24,18 @@ public class Enemy : MonoBehaviour {
 
         float distanceToTarget = Vector2.Distance(transform.position, target.position);
 
-        if(distanceToTarget < chaseRange)
+        if (chase)
         {
-            transform.position = Vector2.MoveTowards(transform.position, target.position, speed * Time.deltaTime); // from, to, speed
+            if (distanceToTarget < chaseRange)
+            {
+                transform.position = Vector2.MoveTowards(transform.position, target.position, speed * Time.deltaTime); // from, to, speed
+            }
+        }
+        else
+        {
 
         }
 
 
-	}
+    }
 }

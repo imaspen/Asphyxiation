@@ -9,6 +9,9 @@ public class Player : MonoBehaviour
     public static float oxygenTank = 1; // players health
     public float collectedTanks = 0;
 
+    public float stunCoolDown = 0;
+    public bool stunAvailable = true;
+
     public int score = 0;
     //public Text scoreText; // include when text on canvas
 
@@ -191,11 +194,49 @@ public class Player : MonoBehaviour
             collision.gameObject.SetActive(false);
         }
 
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
         if (collision.gameObject.tag == "Enemy")
         {
+            var enemy = GameObject.FindGameObjectWithTag("Enemy").GetComponent<Enemy>();
+
+            if (stunAvailable)
+            {
+                StartCoroutine(StunEnemy());
+            }
 
         }
+    }
 
+    IEnumerator StunEnemy()
+    {
+        var enemy = GameObject.FindGameObjectWithTag("Enemy").GetComponent<Enemy>();
+        var enemyBody = GameObject.FindGameObjectWithTag("Enemy").GetComponent<Rigidbody2D>();
+        enemy.chase = false;
+        Physics2D.IgnoreCollision(enemy.GetComponent<Collider2D>(), gameObject.GetComponent<Collider2D>());
+        enemy.enabled = false;
+
+        stunCoolDown = 20;
+        yield return new WaitForSeconds(5);
+
+        enemy.chase = true;
+        Physics2D.IgnoreCollision(enemy.GetComponent<Collider2D>(), gameObject.GetComponent<Collider2D>(), false);
+        enemy.enabled = true;
+    }
+
+    void StunCoolDown()
+    {
+        if (stunCoolDown > 0)
+        {
+            stunAvailable = false;
+            stunCoolDown -= Time.deltaTime;
+        }
+        else
+        {
+            stunAvailable = true;
+        }
     }
 
     private void updateScoreText()
