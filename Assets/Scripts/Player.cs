@@ -6,13 +6,11 @@ public class Player : MonoBehaviour
 {
 
     public int maxOxygenCapacity = 1;
-    public static float oxygenTank = 0; // players health
-    public bool onOxygenPad = false;
+    public static float oxygenTank = 1; // players health
     public float collectedTanks = 0;
 
     public int score = 0;
     //public Text scoreText; // include when text on canvas
-
 
     Rigidbody2D rigidbody2D;
     SpriteRenderer spriteRenderer;
@@ -93,17 +91,9 @@ public class Player : MonoBehaviour
 
     void LoseOxygenOverTime()
     {
-        if (onOxygenPad == false && oxygenTank > 0)
+        if (oxygenTank > 0)
         {
             oxygenTank -= 0.05f * Time.deltaTime;
-        }
-    }
-
-    void IncreaseOxygenOverTime()
-    {
-        if (onOxygenPad == true && oxygenTank > 0)
-        {
-            oxygenTank += 0.05f * Time.deltaTime;
         }
     }
 
@@ -131,11 +121,6 @@ public class Player : MonoBehaviour
             Destroy(collision.gameObject);
         }
 
-        if (collision.gameObject.name.Equals("OxygenPad"))
-        {
-            onOxygenPad = true;
-        }
-
         if (collision.gameObject.tag == "Gem")
         {
             score += 10;
@@ -148,14 +133,6 @@ public class Player : MonoBehaviour
 
         }
 
-    }
-
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.gameObject.name.Equals("OxygenPad"))
-        {
-            onOxygenPad = false;
-        }
     }
 
     private void updateScoreText()
