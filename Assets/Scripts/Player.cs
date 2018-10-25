@@ -11,11 +11,16 @@ public class Player : MonoBehaviour
     Rigidbody2D rigidbody2D;
     SpriteRenderer spriteRenderer;
 
-    public int jumpForce = 1000;
+    public float jumpForce;
     public Sprite[] rightSprites = new Sprite[3];
     public Sprite[] leftSprites = new Sprite[3];
     public Sprite centerSprite;
     public float speed = 3.0f;
+    public Transform[] groundPoints = new Transform[3];
+    public LayerMask ground;
+
+    bool isGrounded;
+    bool jump;
 
     // Use this for initialization
     void Start()
@@ -28,15 +33,15 @@ public class Player : MonoBehaviour
     void FixedUpdate()
     {
         var move = Input.GetAxis("Horizontal");
-        UpdateSprite(move);
-        
-        //transform.position += move * speed * Time.deltaTime;
-        MovePlayer(move);
 
+        isGrounded = IsGrounded();
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            rigidbody2D.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
+            jump = true;
         }
+
+        UpdateSprite(move);
+        MovePlayer(move);
 
         LoseOxygenOverTime();
     }
@@ -44,6 +49,12 @@ public class Player : MonoBehaviour
     void MovePlayer(float direction)
     {
         rigidbody2D.velocity = new Vector2(direction * speed, rigidbody2D.velocity.y);
+        if (isGrounded && jump)
+        {
+            isGrounded = false;
+            rigidbody2D.AddForce(new Vector2(0, jumpForce));
+            jump = false;
+        }
     }
 
     void UpdateSprite(float direction)
@@ -77,5 +88,21 @@ public class Player : MonoBehaviour
     void LoseOxygenOverTime()
     {
         oxygenTank -= 1 * Time.deltaTime;
+    }
+
+    private bool IsGrounded()
+    {
+        if (rigidbody2D.velocity.y <= 0)
+        {
+            foreach (Transform point in groundPoints)
+            {
+                Collider2D[] colliders = Physics2D.OverlapCircleAll(point.position, 0.05f, ground);
+                for (int i = 0; i < colliders.Length; i++)
+                {
+                    if (colliders[i].gameObject != gameObject) return true;
+                }
+            }
+        }
+        return false;
     }
 }
