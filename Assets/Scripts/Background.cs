@@ -2,21 +2,32 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Background : MonoBehaviour {
+public class Background : MonoBehaviour
+{
+    public GameObject backgroundTile;
 
-    [SerializeField]
-    private GameObject backgroundTile;
+    public int x;
+    public int y;
 
-    [SerializeField]
-    private int x;
-    [SerializeField]
-    private int y;
+    void Start()
+    {
+        ClearBackground();
+        GenerateBackground();
+    }
 
-	// Use this for initialization
-	void Start () {
+    private void ClearBackground()
+    {
+        foreach (Transform child in transform)
+        {
+            Destroy(child.gameObject);
+        }
+    }
+
+    private void GenerateBackground()
+    {
         float baseX = x / 2;
         float baseY = y / 2 - 0.5f;
-		for (int i = 0; i < x; i++)
+        for (int i = 0; i < x; i++)
         {
             for (int j = 0; j < y; j++)
             {
@@ -24,5 +35,5 @@ public class Background : MonoBehaviour {
                 newBrick.transform.position = new Vector3(baseX - i, baseY - j, 0);
             }
         }
-	}
+    }
 }
